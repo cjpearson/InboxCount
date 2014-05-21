@@ -23,7 +23,15 @@
 %new
 -(void)updateTitleCount{
     int unreadCount = [[self mf_unreadCountForDisplay] integerValue];
-    NSString* titleString = @"Inbox";
+    NSMutableString* titleString = [[NSMutableString alloc] init];
+    [titleString setString: [[self navigationItem] title]];//@"Inbox";
+
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\W\\(\\d*\\)"
+                                                                       options:NSRegularExpressionCaseInsensitive
+                                                                         error:&error];
+    [regex replaceMatchesInString:titleString options:NSRegularExpressionCaseInsensitive range:NSMakeRange(0, titleString.length) withTemplate:@""];
+
     if(unreadCount>0)
         [[self navigationItem] setTitle:[NSString stringWithFormat:@"%@ (%d)",titleString, unreadCount]];
     else
