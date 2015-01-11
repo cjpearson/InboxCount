@@ -1,7 +1,7 @@
 Package: com.connorjpearson.inboxcount
 Name: Inbox Count
 Depends: firmware (>= 7.0), mobilesubstrate
-Version: 1.0.2
+Version: 1.0.3
 Architecture: iphoneos-arm
 Description: Shows message counts in the top bar of the mail app, like in previous versions of iOS.
 Maintainer: Connor Pearson

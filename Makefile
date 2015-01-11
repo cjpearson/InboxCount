@@ -1,4 +1,3 @@
-export THEOS_DEVICE_IP =  192.168.1.10
 export ARCHS= armv7 arm64
 export TARGET=iphone:latest:4.3
 SDKVERSION = 7.0

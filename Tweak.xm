@@ -1,7 +1,7 @@
 #import "notify.h"
 
 @interface MessageMegaMall : NSObject
--(id)tableIndexPathOfMessageOrConversation:(id)arg1;
+-(id)flattenedIndexPathOfMessage:(id)arg1;
 -(unsigned)unreadCountForDisplay;
 -(unsigned)localMessageCount;
 @end
@@ -69,7 +69,7 @@ int isLocked(){
 -(void)updateTitleCount{
     MessageMegaMall* mall = MSHookIvar<MessageMegaMall*>(self,"_mall");
     MFMailMessage* message = MSHookIvar<MFMailMessage*>(mall,"_currentMessage");
-    int index = ((NSIndexPath*)[mall tableIndexPathOfMessageOrConversation:message]).row +1;
+    int index = ((NSIndexPath*)[mall flattenedIndexPathOfMessage: message]).row + 1;
     int total = [mall localMessageCount];
     [[self navigationItem] setTitle:[NSString stringWithFormat:@"%d of %d", index, total]];
 }
